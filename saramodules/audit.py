@@ -39,9 +39,13 @@ def check_cleartext_services(api):
 # MGMT-002: services without source address restriction
 def check_service_restrictions(api):
     found = []
+    # "address" before v7.24, "available-from" since
+    field = "address"
 
     for service in active_services(api):
-        if not service.get("address"):
+        if "available-from" in service:
+            field = "available-from"
+        if not service.get(field):
             found.append(service)
 
     if not found:
@@ -49,9 +53,9 @@ def check_service_restrictions(api):
 
     finding(
         "MGMT-002", "critical", "Management services accept connections from any address",
-        evidence=[f"{service.get('name')}: address=\"\"" for service in found],
+        evidence=[f"{service.get('name')}: {field}=\"\"" for service in found],
         impact="Services are exposed to brute-force and exploitation from any network",
-        fix="/ip service set <name> address=<management-subnet>",
+        fix=f"/ip service set <name> {field}=<management-subnet>",
     )
 
 
