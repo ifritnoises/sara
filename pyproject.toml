@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 authors = [{name = "Ifrit", email = "contact@ifritnoises.org"}]
 name = "sara"
-version = "1.4.0"
+version = "1.4.1"
 description = "RouterOS Security Assessment Toolkit"
 readme = "README.md"
 license = {file = "LICENSE"}

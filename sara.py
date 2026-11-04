@@ -19,7 +19,7 @@ def banner():
     \ `--.  __ _ _ __ __ _
      `--. \/ _` | '__/ _` |
     /\__/ / (_| | | | (_| |
-    \____/ \__,_|_|  \__,_| v1.4.0
+    \____/ \__,_|_|  \__,_| v1.4.1
 """)
     print(INDENT + "Sara: RouterOS Security Assessment Toolkit")
     print(INDENT + "Author: Ifrit")
